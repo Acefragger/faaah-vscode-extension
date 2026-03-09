@@ -1,0 +1,62 @@
+{
+  "name": "faaah",
+  "displayName": "FAAAH - Error Sound Alert",
+  "description": "Plays a FAAAH sound when errors appear. More errors = longer FAAAH.",
+  "version": "1.0.0",
+  "publisher": "yartii-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Acefragger/faaah-vscode-extension"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "keywords": ["sound", "error", "audio", "fun", "notification"],
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./src/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "FAAAH",
+      "properties": {
+        "faaah.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable FAAAH sounds"
+        },
+        "faaah.baseDuration": {
+          "type": "number",
+          "default": 600,
+          "description": "Base FAAAH duration in ms (scales with error count)"
+        },
+        "faaah.volume": {
+          "type": "number",
+          "default": 0.8,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Volume (0.0 to 1.0)"
+        },
+        "faaah.cooldownMs": {
+          "type": "number",
+          "default": 2000,
+          "description": "Minimum ms between FAAAHs (debounce)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "faaah.toggle",
+        "title": "FAAAH: Toggle Sound On/Off"
+      },
+      {
+        "command": "faaah.test",
+        "title": "FAAAH: Test Sound"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0"
+  }
+}
